@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public float direction;
     public float speed;
     public float jumptime;
+    public float jumpForce;
     public float curentJumpTime;
+    public float jumpForceVariation;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     void Start()
@@ -28,9 +30,28 @@ public class PlayerMovement : MonoBehaviour
         {
             sr.flipX = false;
         }
+        if (Input.GetButtonDown("Jump"))
+        {
+            curentJumpTime = jumptime;
+        }
+        else if (Input.GetButton("Jump"))
+        {
+            curentJumpTime -= Time.deltaTime;
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            curentJumpTime = 0;
+        }
+       
     }
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(direction, rb.velocity.y);
+
+        if (curentJumpTime > 0)
+        {
+            rb.velocity = new Vector2(direction, jumpForce);
+        }
+        
     }
 }

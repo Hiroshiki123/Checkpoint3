@@ -250,7 +250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   speed: 4
-  jumptime: 0
+  jumptime: 1
+  jumpForce: 4
   curentJumpTime: 0
 --- !u!70 &715450045
 CapsuleCollider2D:
