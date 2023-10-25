@@ -251,8 +251,10 @@ MonoBehaviour:
   direction: 0
   speed: 4
   jumptime: 1
-  jumpForce: 4
+  jumpForce: 3
+  variationjump: 0
   curentJumpTime: 0
+  jumpForceVariation: 0
 --- !u!70 &715450045
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
