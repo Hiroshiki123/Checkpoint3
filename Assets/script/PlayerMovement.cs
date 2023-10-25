@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumptime;
     public float jumpForce;
+    public float variationjump;
     public float curentJumpTime;
     public float jumpForceVariation;
     private Rigidbody2D rb;
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         direction = Input.GetAxisRaw("Horizontal")*speed;
         if (direction < 0 )
         {
@@ -33,10 +36,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             curentJumpTime = jumptime;
+            jumpForceVariation = 2;
         }
         else if (Input.GetButton("Jump"))
         {
             curentJumpTime -= Time.deltaTime;
+            jumpForceVariation -= Time.deltaTime;
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -50,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (curentJumpTime > 0)
         {
-            rb.velocity = new Vector2(direction, jumpForce);
+            rb.velocity = new Vector2(direction, jumpForce * jumpForceVariation) ;
         }
         
     }
