@@ -36,10 +36,16 @@ public class PlayerMovement : MonoBehaviour
         if (direction < 0 )
         {
             sr.flipX = true;
+            ani.SetBool("andando", true);
         }
         if (direction > 0 )
         {
             sr.flipX = false;
+            ani.SetBool("andando", true);
+        }
+        if (direction == 0)
+        {
+            ani.SetBool("andando", false);
         }
         if (Input.GetButtonDown("Jump") && isGround)
         {
@@ -55,7 +61,20 @@ public class PlayerMovement : MonoBehaviour
         {
             curentJumpTime = 0;
         }
-       
+        if (rb.velocity.y > 0)
+        {
+            ani.SetInteger("pulando",1);
+        }
+        if (rb.velocity.y < 0)
+        {
+            ani.SetInteger("pulando", -1);
+        }
+        if (rb.velocity.y == 0)
+        {
+            ani.SetInteger("pulando", 0);
+        }
+        
+
     }
     private void FixedUpdate()
     {
