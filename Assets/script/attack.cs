@@ -6,7 +6,9 @@ public class attack : MonoBehaviour
 {
     bool ataquePronto;
     public GameObject ataque;
-    public GameObject corte;
+    public float direcao;
+    public float tempo;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +18,27 @@ public class attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 posicao = new Vector2(transform.position.x + 1f, transform.position.y);
-        if (Input.GetButtonDown("Fire1"))
+        direcao = Input.GetAxisRaw("Horizontal");
+
+        tempo -= Time.deltaTime;
+        if (tempo < 0)
         {
-            corte = Instantiate( ataque,posicao,transform.rotation);
+            ataquePronto = true;
+            ataque.SetActive(false);
+        }
+        if (Input.GetButtonDown("Fire1")&& ataquePronto)
+        {
+            ataque.SetActive(true);
+            ataquePronto = false;
+            tempo = 0.5f;
+        }
+        if (direcao > 0)
+        {
+            ataque.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if (direcao < 0)
+        {
+            ataque.transform.eulerAngles = new Vector3(0, 180f, 0);
         }
     }
 }
