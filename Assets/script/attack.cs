@@ -5,6 +5,7 @@ using UnityEngine;
 public class attack : MonoBehaviour
 {
     bool ataquePronto;
+    
     public GameObject ataque;
     public float direcao;
     public float tempo;

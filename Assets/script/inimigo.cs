@@ -6,7 +6,7 @@ public class inimigo : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float velocidade;
-    bool lado =true;
+    bool lado = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,5 +37,7 @@ public class inimigo : MonoBehaviour
         {
             lado = !lado;
         }
+        
     }
+    
 }

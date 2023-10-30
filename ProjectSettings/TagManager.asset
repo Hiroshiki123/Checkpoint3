@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - parede
+  - lamina
+  - inimigo
   layers:
   - Default
   - TransparentFX

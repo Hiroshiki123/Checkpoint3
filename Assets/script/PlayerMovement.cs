@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -85,5 +86,12 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(direction, jumpForce * jumpForceVariation) ;
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "inimigo")
+        {
+            Destroy(gameObject);
+        }
     }
 }
